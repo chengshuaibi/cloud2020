@@ -16,7 +16,8 @@ public class PaymentController {
     private PaymentService paymentService;
     @Value("${server.port}")
     private String serverPort;
-    @PostMapping(value = "/payment/create")
+
+    @RequestMapping(value = "/payment/create",method = RequestMethod.POST)
     public CommentResult create(@RequestBody Payment payment){
         int result =paymentService.create(payment);
         log.info("*****插入结果为: "+result);

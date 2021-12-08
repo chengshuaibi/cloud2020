@@ -15,6 +15,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
-mybatis:
+
+instance:
+  instance-id:mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entities
