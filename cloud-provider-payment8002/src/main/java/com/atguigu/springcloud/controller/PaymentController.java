@@ -31,7 +31,7 @@ public class PaymentController {
     public CommentResult getElementById(@PathVariable("id") Long id){
         Payment result =paymentService.getElementById(id);
         if (result!=null){
-            return new CommentResult(200,"查询数据库成功serverPort: ："+serverPort,result);
+            return new CommentResult(200,"查询数据库成功sevrerPort: ："+serverPort,result);
         }else {
             return new CommentResult(444,"没有对应记录",null);
         }
