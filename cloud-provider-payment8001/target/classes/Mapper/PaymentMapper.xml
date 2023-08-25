@@ -4,7 +4,7 @@
 <mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
     <resultMap id="baseResultMapper" type="com.atguigu.springcloud.entities.Payment">
         <id column="id" property="id" jdbcType="BIGINT"></id>
-        <result column="serial" property="serial" jdbcType="BIGINT"></result>
+        <result column="serial" property="serial" jdbcType="VARCHAR"></result>
     </resultMap>
     <insert id="create" parameterType="com.atguigu.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id" >
     insert into payment (serial) values (#{serial})
