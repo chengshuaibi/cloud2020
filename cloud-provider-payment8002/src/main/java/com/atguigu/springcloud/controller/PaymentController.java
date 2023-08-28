@@ -36,6 +36,10 @@ public class PaymentController {
             return new CommentResult(444,"没有对应记录",null);
         }
     }
+    @GetMapping("/payment/lb")
+    public String paymentlb(){
+        return serverPort;
+    }
 
     @GetMapping("/payment/feign/timeout")
     public String paymentFeignTimeout(){
