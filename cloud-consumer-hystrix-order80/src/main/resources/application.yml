@@ -1,0 +1,18 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-payment-hystrix-order
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1.com:7002/eureka/
+  instance:
+    instance-id: cloud-payment-hystrix-order
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+
