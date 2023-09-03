@@ -12,4 +12,7 @@ public interface PaymentHystrixService {
 
     @GetMapping("/hystrix/timeout/{id}")
     public String timeout(@PathVariable("id")Integer id);
+
+    @GetMapping("/hystrix/CircleBreaker/{id}")
+    public String circleBreaker(@PathVariable("id")Integer id);
 }

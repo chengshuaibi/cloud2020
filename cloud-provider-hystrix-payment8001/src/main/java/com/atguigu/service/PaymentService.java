@@ -31,4 +31,27 @@ public class PaymentService {
         return "调用了"+"paymentInfo_TimeOutHandler";
 
     }
+
+    /*
+    * 服务熔断
+    * */
+    @HystrixCommand(fallbackMethod = "paymentCircleBreaker_TimeOutHandler",
+            commandProperties = {
+                    @HystrixProperty(name="circleBreaker.enable",value = "true"),//是否开启断路器
+                    @HystrixProperty(name="circleBreaker.requestVolumeThreshold",value = "10"),//请求次数
+                    @HystrixProperty(name="circleBreaker.sleepWindowsMillisecond",value = "10000"),//时间窗口期
+                    @HystrixProperty(name="circleBreaker.errorThresholdPercentTage",value = "60"),//失败率到达多少跳闸
+
+            })
+    public String paymentInfo_CircleBreaker(Integer id){
+     if (id<0){
+         throw new RuntimeException("id不能为负数");
+     }
+        return "线程池"+Thread.currentThread().getName()+"paymentInfo_CircleBreaker"+id+"调用成功";
+    }
+
+    public String paymentCircleBreaker_TimeOutHandler(Integer id) {
+        return "调用了"+"paymentInfo_CircleBreaker"+"id不能为负数";
+
+    }
     }

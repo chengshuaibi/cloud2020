@@ -29,5 +29,18 @@ public class OrderHystrixController {
         return "order80调用了"+"paymentInfo_TimeOutHandler"+id;
 
     }
+    @GetMapping("/hystrix/CircleBreaker/{id}")
+    @HystrixCommand(fallbackMethod = "paymentInfo_CircleBreakerr",
+            commandProperties = {
+                    //调用超过3秒调用fallback
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
+            })
+    public String circleBreaker(@PathVariable("id")Integer id){
+        return paymentHystrixService.circleBreaker(id);
 
+    }
+    public String paymentInfo_CircleBreakerr(Integer id) {
+        return "order80调用了"+"paymentInfo_CircleBreakerr"+id;
+
+    }
 }

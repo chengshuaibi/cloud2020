@@ -19,4 +19,9 @@ public class PaymentController {
     public String timeout(@PathVariable("id")Integer id){
         return paymentService.paymentInfo_TimeOut(id);
     }
+
+    @GetMapping("/hystrix/CircleBreaker/{id}")
+    public String circleBreaker(@PathVariable("id")Integer id){
+        return paymentService.paymentInfo_CircleBreaker(id);
+    }
 }
